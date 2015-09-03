@@ -1,0 +1,23 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400);
+
+body {
+  margin: 10px;
+  font-family: 'Roboto', 'Arial', 'sans';
+}
+
+#main-wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+
+#retailer-listing-nav {
+  .nav-list-wrapper {
+    overflow: auto;
+    height: 100%;
+  }
+}
+
+#retailer-info-wrapper {
+  height: 100%;
+  overflow: auto;
+}

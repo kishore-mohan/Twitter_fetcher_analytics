@@ -1,0 +1,7 @@
+%ul.nav.nav-pills.nav-stacked
+  %li.active{'id' => "retailer-link-#{@retailer.id}", 'role' => 'presentation'}
+    = link_to @retailer.name, "javascript:void(0)"
+  - Retailer.sorted_by_name.reject{|a| a == @retailer}.each do |retailer|
+    %li{'id' => "retailer-link-#{retailer.id}", 'role' => 'presentation'}
+      = link_to retailer.name, retailer_url(retailer.name)
+

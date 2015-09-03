@@ -1,0 +1,9 @@
+.row
+  #retailer-listing-nav.col-md-2
+    .header-wrapper
+      %h4 List of retailers
+    .nav-list-wrapper
+      = render :partial => "navigations"
+  #retailer-info-wrapper.col-md-10
+    %h1
+      = @retailer.name

@@ -1,0 +1,10 @@
+%html{:lang => 'en'}
+  %head
+    %title ReferralCandy: Retailer Twitter Analytics
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    #main-wrapper.container-fluid
+      = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
