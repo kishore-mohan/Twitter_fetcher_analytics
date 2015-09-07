@@ -59,10 +59,6 @@ class TwitterHelper
     {tweets: retailer_results}
   end
 
-  def generate_query_string
-
-  end
-
   private
 
   def twitter_config
