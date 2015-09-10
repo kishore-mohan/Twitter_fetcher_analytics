@@ -24,42 +24,28 @@ class TwitterHelper
   end
 
   def search_tweets(store_in_db=true)
-    parts = []
-    parts << "#{twitter_config['query_host']}"
-    if from_date
-      parts << "since:#{from_date}"
-    end
-    query = parts.join(" ") + " filter:links"
-
-    meta  = { }
     retailer_results = []
 
-    client.search(query).take(limit).each do |result|
-      code = nil
-
-      result.to_hash[:entities][:urls].each do |url|
-        if url[:expanded_url].to_s.include?(twitter_config['query_host'])
-          code = url[:display_url].split(".#{twitter_config['query_host']}/").first
-        end
-      end
-
-      if code
+    client.search(twitter_config['query_host'], query).take(limit).each do |result|
+      response = Hashie::Mash.new(result.to_hash)
+      (response.entities.try(:urls) || []).each do |url|
+        next unless url.display_url =~ /(^.*)(.#{twitter_config['query_host']})/ && $1  
         retailer_results << {retailer_code: code}
+        push_retailer($1) if store_in_db        
       end
-    end
-
-    if store_in_db
-      retailer_results.each do |retailer|
-        if !Retailer.exists?(name: retailer[:retailer_code])
-          Retailer.create!(name: retailer[:retailer_code])
-        end
-      end
-    end
-
-    {tweets: retailer_results}
+    end   
+    retailer_results 
   end
 
   private
+
+  def push_retailer(code)
+    Retailer.find_or_create_by(name: code)
+  end
+
+  def query
+    @query ||= {since: from_date, filter: "links"}.reject { |k, v| v.blank?}
+  end
 
   def twitter_config
     YAML.load_file File.join(Rails.root, 'config/twitter.yml')

@@ -10,7 +10,7 @@ namespace 'migration' do
     puts "  from_date: #{from_date.inspect}" if from_date
     puts "  limit: #{limit || TwitterHelper::DEFAULT_LIMIT}"
 
-    helper.search_tweets[:meta]
+    helper.search_tweets
 
     puts "DONE"
   end

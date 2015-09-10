@@ -37,6 +37,7 @@ GEM
       sass (>= 3.2.19)
     buftok (0.2.0)
     builder (3.2.2)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -52,6 +53,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     haml (4.0.6)
       tilt
+    hashie (3.4.2)
     hike (1.2.3)
     http (0.6.4)
       http_parser.rb (~> 0.6.0)
@@ -68,11 +70,16 @@ GEM
       mime-types (>= 1.16, < 3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
+    method_source (0.8.2)
     mime-types (2.5)
     minitest (5.6.1)
     multi_json (1.11.0)
     multipart-post (2.0.0)
     naught (1.0.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.5.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -120,6 +127,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     simple_oauth (0.3.1)
+    slop (3.6.0)
     spring (1.3.6)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -160,8 +168,10 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   haml
+  hashie
   jbuilder (~> 2.0)
   jquery-rails
+  pry
   rails (= 4.1.8)
   rspec-rails
   sass-rails (~> 4.0.3)
@@ -171,6 +181,3 @@ DEPENDENCIES
   turbolinks
   twitter
   uglifier (>= 1.3.0)
-
-BUNDLED WITH
-   1.10.5

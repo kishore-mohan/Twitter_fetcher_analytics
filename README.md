@@ -2,8 +2,7 @@
 
 ### Setup
 ```
-bundle install
-bundle exec rake db:create:all db:migrate db:test:prepare
+bin/setup
 ```
 
 ### Assignment
