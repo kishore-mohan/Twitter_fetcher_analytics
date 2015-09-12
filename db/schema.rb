@@ -11,12 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514104211) do
+ActiveRecord::Schema.define(version: 20150912110626) do
 
   create_table "retailers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tweet_counts"
   end
+
+  create_table "tweets", force: true do |t|
+    t.integer  "tweet_id"
+    t.string   "user_name"
+    t.integer  "retweet_count"
+    t.integer  "followers_count"
+    t.integer  "friends_count"
+    t.integer  "favorite_count"
+    t.datetime "tweet_time"
+    t.text     "text"
+    t.string   "user_location"
+    t.integer  "retailer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweets", ["retailer_id"], name: "index_tweets_on_retailer_id"
 
 end

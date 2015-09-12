@@ -30,7 +30,7 @@ class TwitterHelper
       response = Hashie::Mash.new(result.to_hash)
       (response.entities.try(:urls) || []).each do |url|
         next unless url.display_url =~ /(^.*)(.#{twitter_config['query_host']})/ && $1  
-        retailer_results << {retailer_code: code}
+        retailer_results << {retailer_code: $1}
         push_retailer($1) if store_in_db        
       end
     end   

@@ -1,0 +1,11 @@
+#if any new social network added that can be included in supported. 
+#if want to remove any analyzer can remove on run time no need to restart the application.
+
+supported:
+  ["twitter_analyzer", "facebook"]
+
+twitter:
+  api_key: v2oXBry2rXPxYazJtsrRPhEys
+  api_secret: nPb0UUwIfRYjSrN9GivB0UaElVrFFbCHQpBEmeWWMOHjbTeq1c
+
+query_host: refr.cc  
