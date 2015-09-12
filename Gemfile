@@ -11,6 +11,10 @@ gem 'haml'
 
 gem 'bootstrap-sass'
 
+gem 'will_paginate', '~> 3.0.6'
+gem 'rails_autolink'
+
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -22,8 +26,12 @@ gem 'virtus'
 
 
 #debugging
-gem 'pry'
-gem 'hashie'
+group :development, :test do
+  gem 'pry'
+  gem 'hashie'
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 group :development do
   gem 'rspec-rails'

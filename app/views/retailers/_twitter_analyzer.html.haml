@@ -1,0 +1,44 @@
+.col-md-8
+  .cols.column1
+    %h1
+      Total Tweets
+      .total_tweets.data_number
+        =@retailer.tweet_counts
+.col-md-4
+  .cols.column1
+    %h2
+      Exposure
+      .exposure_impressions.data_number
+        = @retailer.impression 
+
+  .cols.column2
+    %h2
+      Retweets
+      .reach_score.data_number
+        = @retailer.retweet_counts  
+
+.col-md-4
+  .cols.column1
+    %h2
+      Estimated Reach
+      .exposure_impressions.data_number
+        = @retailer.reach 
+
+  .cols.column2
+    %h2
+      Favorites 
+      .reach_score.data_number
+        = @retailer.favorite_counts  
+.col-md-2
+.col-md-4
+  .cols.column1
+    %h2
+      Tweets
+      %table.table
+        %tbody
+        = render @tweets
+        
+      = will_paginate @tweets
+
+
+

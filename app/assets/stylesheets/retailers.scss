@@ -6,7 +6,6 @@ body {
 }
 
 #main-wrapper {
-  overflow: hidden;
   height: 100%;
 }
 
@@ -20,4 +19,56 @@ body {
 #retailer-info-wrapper {
   height: 100%;
   overflow: auto;
+}
+
+.tweet_body2 {
+  height: 20px;
+  width: 28px;
+  display: inline-block;
+  color: #fff;
+  font-family: Georgia,Helvetica,sans-serif;
+  font-size: 35px;
+  font-style: bold;
+  font-weight: 900;
+  text-shadow: none;
+  text-align: center;
+}
+
+#error-implementation{
+  background-color: red; 
+  font-size: 39px;
+}
+
+.exposure_impressions {
+  font-size: 40px;
+  text-align: justify;
+  padding-top: 46px;
+}
+
+.reach_score {
+  font-size: 78px;
+  text-align: justify;
+  padding-top: 46px;
+}
+
+.data_number {
+  font-family: 'DejaVuSansBold', Helvetica, Arial, sans-serif;
+  font-size: 52px;
+  color: #7D93B2;
+}
+
+/****LAYOUT****/
+.cols{
+  padding: 8px 5px;
+  vertical-align: top;
+  margin-top:5px;
+}
+.column1 {
+  display: inline-block;
+  width: 540px;
+  margin-right: 5px;
+}
+.column2{
+  width: 1200px;
+  display: inline-block;
 }

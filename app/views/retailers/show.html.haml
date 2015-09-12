@@ -4,6 +4,15 @@
       %h4 List of retailers
     .nav-list-wrapper
       = render :partial => "navigations"
-  #retailer-info-wrapper.col-md-10
-    %h1
-      = @retailer.name
+  #retailer-listing-nav.col-md-2
+    .header-wrapper
+      %h4 Analyzer
+    - SocialAnalyzer.config["supported"].each do |net|
+      %li{'id' => "retailer-link-#{net}", 'role' => 'presentation'}
+        = link_to net, retailer_url(params[:id], type: net)
+  = render :partial => params[:type] if params[:type]     
+  
+
+      
+         
+   
