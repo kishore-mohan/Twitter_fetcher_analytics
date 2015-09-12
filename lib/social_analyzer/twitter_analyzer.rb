@@ -28,7 +28,7 @@ module SocialAnalyzer
       TweetInfo.new(text: response.text, id: response.id, name: response.user.screen_name, retailer: retailer, 
         retweet_count: response.retweet_count, follower_count: response.user.followers_count, 
         friends_count: response.user.friends_count, tweet_time: response.created_at,
-        location: response.user.location, favorite_count: response.favorite_counts)
+        location: response.user.location, favorite_counts: response.favorite_count)
     end
 
     ##
@@ -45,7 +45,8 @@ module SocialAnalyzer
     private
 
     def limit
-      options[:limit] || DEFAULT_LIMIT
+      return options[:limit].to_i if options[:limit]
+      DEFAULT_LIMIT
     end
 
     def client

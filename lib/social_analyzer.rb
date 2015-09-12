@@ -10,7 +10,7 @@ module SocialAnalyzer
     SOCIALANALYZER = YAML.load_file File.join(Rails.root, 'config/social_analyzer.yml')  
 
     SOCIALANALYZER["supported"].each do |service|
-      define_method(service.to_sym) do |url = SOCIALANALYZER["query_host"], options= {}|
+      define_method(service.to_sym) do |url: SOCIALANALYZER["query_host"], options: {}|
         class_name = service.to_s.split('_').map(&:capitalize).join
         SocialAnalyzer.const_get(class_name).new(url, options).fetch
       end

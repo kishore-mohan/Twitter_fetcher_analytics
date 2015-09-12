@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "social_analyzer.rb"
 
 describe SocialAnalyzer do
   describe "config" do
@@ -17,18 +18,18 @@ describe SocialAnalyzer do
 
     describe "twitter limit" do
       it "should give one tweet info" do
-        expect(SocialAnalyzer.twitter_analyzer("refr.cc", {limit: 1}).size).to eq(1)
+        expect(SocialAnalyzer.twitter_analyzer(options: { limit: 1 } ).size).to eq(1)
       end
 
       it "should give more than 2 info" do
-        expect(SocialAnalyzer.twitter_analyzer("refr.cc", {limit: 4}).size).to be > 2
+        expect(SocialAnalyzer.twitter_analyzer(options: { limit: 4 }).size).to be > 2
       end
     end
 
     describe "twitter since_id" do
       it "id should be greater than since id" do
         since_id = 642013121448546305
-        info = SocialAnalyzer.twitter_analyzer("refr.cc", {limit: 1, since_id: since_id})
+        info = SocialAnalyzer.twitter_analyzer(options: { limit: 1, since_id: since_id})
         expect(info.first.id).to be > since_id
       end
     end
