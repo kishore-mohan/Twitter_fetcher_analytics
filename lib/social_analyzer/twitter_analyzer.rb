@@ -14,7 +14,7 @@ module SocialAnalyzer
         response = Hashie::Mash.new(result.to_hash)
         infos << store_info(response)
       end 
-      infos
+      infos.reject(&:blank?)
       #TODO: Exception need to handled
       rescue Twitter::Error
         Rails.logger.error("Twitter fetch throwing error check the connection")

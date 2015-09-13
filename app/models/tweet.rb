@@ -14,7 +14,8 @@
 # t.string :user_location
 # t.references :retailer, index: true
 class Tweet < ActiveRecord::Base
-  belongs_to :retailer, counter_cache: :tweet_counts, 
+
+  belongs_to :retailer, counter_cache: :tweet_counts,
     dependent: :destroy
 
   validates :tweet_id, :retailer_id, presence: true
@@ -24,9 +25,9 @@ class Tweet < ActiveRecord::Base
     def fetch!
       cnt = []
       SocialAnalyzer.twitter_analyzer.each do |info|
-        cnt << store_info!(info).id
+        cnt << store_info!(info)
       end
-      cnt
+      cnt.reject(&:blank?)
     end
 
     def fetch_by_options(options)
@@ -34,15 +35,20 @@ class Tweet < ActiveRecord::Base
       SocialAnalyzer.twitter_analyzer(options).each do |info|
         cnt << store_info!(info)
       end
-      cnt
+      cnt.reject(&:blank?)
     end
 
     def store_info!(info)
-      create!(tweet_id: info.id, user_name: info.name, text: info.text, retweet_count: info.retweet_count, 
+      return create(tweet_id: info.id, user_name: info.name, text: info.text, retweet_count: info.retweet_count, 
         followers_count: info.follower_count, friends_count: info.friends_count, tweet_time: info.tweet_time,
         user_location: info.location, favorite_count: info.favorite_counts, 
-        retailer_id: Retailer.find_or_create_by( name: info.retailer ).id)
+        retailer_id: store_retailer(info)).id 
     end
     private :store_info!
+
+    def store_retailer(info)
+      Retailer.find_or_create_by( name: info.retailer ).id
+    end
+    private :store_retailer
   end
 end
