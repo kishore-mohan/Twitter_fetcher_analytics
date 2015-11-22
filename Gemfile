@@ -14,7 +14,6 @@ gem 'bootstrap-sass'
 gem 'will_paginate', '~> 3.0.6'
 gem 'rails_autolink'
 
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'turbolinks'
